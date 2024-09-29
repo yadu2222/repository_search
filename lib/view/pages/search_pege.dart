@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:repository_search/view/components/organisms/repository_list.dart';
 import 'package:repository_search/view/providers/repository_porivider.dart';
 import '../components/templates/basic_template.dart';
 
@@ -31,15 +32,7 @@ class SearchPage extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             } else {
               return Expanded(
-                child: ListView.builder(
-                  itemCount: provider.repositories.length,
-                  itemBuilder: (context, index) {
-                    final repository = provider.repositories[index];
-                    return ListTile(
-                      title: Text(repository.repositoryName),
-                    );
-                  },
-                ),
+                child: RepositoryList(repositories: provider.repositories)
               );
             }
           },
