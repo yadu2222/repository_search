@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 // cardのひながた
-class ListItem extends StatelessWidget {
-  const ListItem({
+class CardItem extends StatelessWidget {
+  const CardItem({
     super.key,
     this.padding = const EdgeInsets.all(15),
     this.margin = const EdgeInsets.all(5),

@@ -13,15 +13,16 @@ class BasicTemplate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Column(children: [
-      AppBarView(
-        titleText: title,
-        popIconButton: popIcon,
-        featureIconButton: featureIconButton,
-        popFunction: popFunction,
-      ), // appbar
-      ...children,
-    ]));
+    return Scaffold(
+        appBar: AppBarView(
+          titleText: title,
+          popIconButton: popIcon,
+          featureIconButton: featureIconButton,
+          popFunction: popFunction,
+        ), // ,
+        body: Center(
+            child: Column(children: [
+          ...children,
+        ])));
   }
 }

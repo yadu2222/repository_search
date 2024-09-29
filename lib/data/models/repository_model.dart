@@ -24,13 +24,13 @@ class Repository {
     for (var item in res) {
       list.add(Repository(
         id: item['id'].toString(),
-        repositoryName: item['name'],
-        repositoryOwner: item['owner']['avatar_url'],
-        langage: item['language'],
-        numberOfStars: item['stargazers_count'],
-        numberOfWatchers: item['watchers_count'],
-        numberOfForks: item['forks'],
-        openIssues: item['open_issues'],
+        repositoryName: item['name'] ?? '',
+        repositoryOwner: item['owner']['avatar_url'] ?? '',
+        langage: item['language'] ?? '',
+        numberOfStars: item['stargazers_count'] ?? 0,
+        numberOfWatchers: item['watchers_count'] ?? 0,
+        numberOfForks: item['forks'] ?? 0,
+        openIssues: item['open_issues'] ?? 0,
       ));
     }
     return list;
