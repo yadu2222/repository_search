@@ -14,7 +14,7 @@ class SearchPage extends StatelessWidget {
       children: [
         // 検索フォーム
         Padding(
-          padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
           child: TextField(
             decoration: const InputDecoration(
               hintText: 'リポジトリ名を入力してください',
@@ -31,9 +31,7 @@ class SearchPage extends StatelessWidget {
             if (provider.loading) {
               return const Center(child: CircularProgressIndicator());
             } else {
-              return Expanded(
-                child: RepositoryList(repositories: provider.repositories)
-              );
+              return Expanded(child: RepositoryList(repositories: provider.repositories));
             }
           },
         ),
