@@ -1,4 +1,5 @@
 class Repository {
+  String id;
   String repositoryName;
   String repositoryOwner;
   String langage;
@@ -8,6 +9,7 @@ class Repository {
   int openIssues;
 
   Repository({
+    required this.id,
     required this.repositoryName,
     required this.repositoryOwner,
     required this.langage,
@@ -21,12 +23,13 @@ class Repository {
     List<Repository> list = [];
     for (var item in res) {
       list.add(Repository(
+        id: item['id'].toString(),
         repositoryName: item['name'],
-        repositoryOwner: item['owner']['login'],
+        repositoryOwner: item['owner']['avatar_url'],
         langage: item['language'],
         numberOfStars: item['stargazers_count'],
         numberOfWatchers: item['watchers_count'],
-        numberOfForks: item['forks_count'],
+        numberOfForks: item['forks'],
         openIssues: item['open_issues'],
       ));
     }

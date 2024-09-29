@@ -7,7 +7,7 @@ import '../data/models/req_model.dart';
 import '../core/constans/api_endpoints.dart';
 
 class HttpReq {
-  static Future<Map> httpReq(Request reqData, [bool isAuth = true]) async {
+  Future<Map> httpReq(Request reqData) async {
     String url = ApiEndpoints.baseUrl + reqData.url; // urlを生成
     // パラメータがあればurlと合成
     if (reqData.pasParams != null) {
