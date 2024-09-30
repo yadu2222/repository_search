@@ -8,8 +8,9 @@ class BasicTemplate extends StatelessWidget {
   final List<Widget> children;
   final IconButton? featureIconButton;
   final bool Function()? popFunction;
+  final bool portrait; // 縦かどうか
 
-  const BasicTemplate({super.key, required this.title, this.popIcon = false, required this.children, this.featureIconButton, this.popFunction});
+  const BasicTemplate({super.key, required this.title, this.popIcon = false, required this.children, this.featureIconButton, this.popFunction, this.portrait = true});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +22,12 @@ class BasicTemplate extends StatelessWidget {
           popFunction: popFunction,
         ), // ,
         body: Center(
-            child: Column(children: [
-          ...children,
-        ])));
+            child: portrait
+                ? Column(children: [
+                    ...children,
+                  ])
+                : Row(children: [
+                    ...children,
+                  ])));
   }
 }
