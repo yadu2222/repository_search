@@ -7,16 +7,18 @@ class RepositoryList extends StatelessWidget {
   const RepositoryList({
     super.key,
     required this.repositories,
+    required this.onTap,
   });
 
   final List<Repository> repositories;
+  final void Function(Repository) onTap;
 
   @override
   Widget build(BuildContext context) {
     return ListItemBox<Repository>(
       itemDatas: repositories,
       listItem: (Repository repository) {
-        return RepositoryCard(repository: repository);
+        return InkWell(onTap: () => onTap(repository), child: RepositoryCard(repository: repository));
       },
     );
   }

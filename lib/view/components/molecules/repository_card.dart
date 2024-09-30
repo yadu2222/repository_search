@@ -18,24 +18,10 @@ class RepositoryCard extends StatelessWidget {
     return CardItem(
       padding: const EdgeInsets.all(15),
       margin: const EdgeInsets.all(5),
-      widget: Row(
-        children: [
-          // OwnerImage(
-          //   imageUrl: repository.repositoryOwner,
-          // ),
-          const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                repository.repositoryName,
-                style: Fonts.p,
-                overflow: TextOverflow.ellipsis, // テキストが親要素を超えた場合の表示
-                maxLines: 1, // 最大行数を1に設定
-              ),
-            ],
-          ),
-        ],
+      widget: Text(
+        repository.repositoryName,
+        style: Fonts.p,
+        overflow: TextOverflow.ellipsis, // テキストが親要素を超えた場合の表示
       ),
     );
   }
