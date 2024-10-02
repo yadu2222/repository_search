@@ -36,6 +36,7 @@ class AppColors {
 
   // つかいやすい色
   static const Color glay = Color(0xFFE8EAED);
-  // 星の色
-  static const Color star = Color(0xFFFFD700);
+  
+  // リンク色
+  static const Color link = Color(0xFF007AFF);
 }

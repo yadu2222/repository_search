@@ -28,7 +28,7 @@ class Fonts {
   static const TextStyle pr = TextStyle(fontSize: 14, fontFamily: 'Noto Sans JP', color: AppColors.dialogNegative, fontWeight: FontWeight.bold);
 
   // 青文字
-  static const TextStyle pb = TextStyle(fontSize: 14, fontFamily: 'Noto Sans JP', color: AppColors.dialogPositive, fontWeight: FontWeight.bold);
+  static const TextStyle link = TextStyle(fontSize: 16, fontFamily: 'Noto Sans JP', color: AppColors.link, fontWeight: FontWeight.bold);
 
   // グレー
   static const TextStyle pg = TextStyle(fontSize: 14, fontFamily: 'Noto Sans JP', color: AppColors.dialogNeutral, fontWeight: FontWeight.bold);

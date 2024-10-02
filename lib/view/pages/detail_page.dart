@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:repository_search/core/constans/fonts.dart';
 import 'package:repository_search/data/models/repository_model.dart';
 import 'package:repository_search/view/components/atoms/image_icon.dart';
 import 'package:repository_search/view/components/molecules/number_label.dart';
@@ -41,12 +42,19 @@ class DetailPage extends StatelessWidget {
                   ),
                 ],
               ),
-              Text(repository.langage), // 言語
+              Row(mainAxisSize: MainAxisSize.min, children: [
+                const Icon(Icons.language),
+                Text(
+                  repository.langage == '' ? '不明' : repository.langage,
+                  style: Fonts.p,
+                ),
+              ]),
+
               InkWell(
                   onTap: () {
                     launchUrl(Uri.parse(repository.repositoryUrl));
                   },
-                  child: Text(repository.repositoryName)), // リポジトリ名
+                  child: Text(repository.repositoryName, style: Fonts.link)), // リポジトリ名
             ],
           )
         // 横向き
