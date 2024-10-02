@@ -7,6 +7,8 @@ class Repository {
   int numberOfWatchers;
   int numberOfForks;
   int openIssues;
+  String repositoryUrl;
+  String ownerUrl;
 
   Repository({
     required this.id,
@@ -17,6 +19,8 @@ class Repository {
     required this.numberOfWatchers,
     required this.numberOfForks,
     required this.openIssues,
+    required this.repositoryUrl,
+    required this.ownerUrl,
   });
 
   static List<Repository> resToList(List<dynamic> res) {
@@ -31,6 +35,8 @@ class Repository {
         numberOfWatchers: item['watchers_count'] ?? 0,
         numberOfForks: item['forks'] ?? 0,
         openIssues: item['open_issues'] ?? 0,
+        repositoryUrl: item['html_url'] ?? '',
+        ownerUrl: item['owner']['html_url'] ?? '',
       ));
     }
     return list;

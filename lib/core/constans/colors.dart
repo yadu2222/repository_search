@@ -36,4 +36,7 @@ class AppColors {
 
   // つかいやすい色
   static const Color glay = Color(0xFFE8EAED);
+  
+  // リンク色
+  static const Color link = Color(0xFF007AFF);
 }
