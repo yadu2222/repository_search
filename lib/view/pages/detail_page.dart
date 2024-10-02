@@ -3,6 +3,7 @@ import 'package:repository_search/data/models/repository_model.dart';
 import 'package:repository_search/view/components/atoms/image_icon.dart';
 import 'package:repository_search/view/components/molecules/number_label.dart';
 import '../components/templates/basic_template.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key, required this.repository});
@@ -17,7 +18,12 @@ class DetailPage extends StatelessWidget {
         ? BasicTemplate(
             title: '詳細',
             children: [
-              OwnerImage(imageUrl: repository.repositoryOwner),
+              InkWell(
+                  // タップでオーナーのページに遷移
+                  onTap: () {
+                    launchUrl(Uri.parse(repository.ownerUrl));
+                  },
+                  child: OwnerImage(imageUrl: repository.repositoryOwner)),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -36,7 +42,11 @@ class DetailPage extends StatelessWidget {
                 ],
               ),
               Text(repository.langage), // 言語
-              Text(repository.repositoryName), // リポジトリ名
+              InkWell(
+                  onTap: () {
+                    launchUrl(Uri.parse(repository.repositoryUrl));
+                  },
+                  child: Text(repository.repositoryName)), // リポジトリ名
             ],
           )
         // 横向き
