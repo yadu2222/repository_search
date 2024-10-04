@@ -2,15 +2,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../lib/core/constans/api_endpoints.dart';
-import '../../lib/data/models/req_model.dart';
-import '../../lib/network/api_client.dart';
-import '../../lib/network/github_api_service.dart';
-
-// HttpReq クラスのモック
-class MockHttpReq extends Mock implements HttpReq {}
+import 'package:repository_search/data/models/req_model.dart' as reqModel; // エイリアスを使用
+import 'package:repository_search/network/github_api_service.dart'; // 確認
+import '../mock/api_client.mocs.mocks.dart'; // 確認
 
 void main() {
-  Request mockReq = Request(reqType: 'GET', url: ApiEndpoints.searchRepository, queryParams: {'q': 'flutter+in:name&sort=stars'});
+  reqModel.Request mockReq = reqModel.Request(reqType: 'GET', url: ApiEndpoints.searchRepository, queryParams: {'q': 'flutter+in:name&sort=stars'});
+
   group('GitHubRepository Tests', () {
     late MockHttpReq mockHttpReq;
     late GithubApiService repository;
@@ -21,30 +19,25 @@ void main() {
     });
 
     test('getRepositories', () async {
-      // モックレスポンスデータ
       final mockResponse = {
         'items': [
           {
             'id': 1,
             'name': 'flutter',
-            'owner': {'avatar_url': 'https://example.com/avatar.png','html_url': 'https://example.com'},
+            'owner': {'avatar_url': 'https://example.com/avatar.png', 'html_url': 'https://example.com'},
             'language': 'Dart',
             'stargazers_count': 1000,
             'watchers_count': 1000,
-            'forks_count': 500,
-            'open_issues_count': 10,
+            'forks': 500,
+            'open_issues': 10,
             'html_url': 'https://example.com',
           }
         ]
       };
 
-      // モックのHttpReqが成功時にモックレスポンスを返すよう設定
       when(mockHttpReq.httpReq(any)).thenAnswer((_) async => mockResponse);
-
-      // 実際にリポジトリのメソッドを呼び出す
       final result = await repository.getRepositories('flutter');
 
-      // 検証
       expect(result.length, 1);
       expect(result[0].repositoryName, 'flutter');
       expect(result[0].repositoryOwner, 'https://example.com/avatar.png');
@@ -56,15 +49,11 @@ void main() {
       expect(result[0].repositoryUrl, 'https://example.com');
       expect(result[0].ownerUrl, 'https://example.com');
 
-      // モックが1回だけ呼ばれたことを確認
       verify(mockHttpReq.httpReq(mockReq)).called(1);
     });
 
     test('失敗をスロ−しました', () async {
-      // モックのHttpReqが失敗時にエラーをスローするよう設定
       when(mockHttpReq.httpReq(mockReq)).thenThrow(Exception('API error'));
-
-      // エラーハンドリングのテスト
       expect(() => repository.getRepositories('flutter'), throwsException);
     });
   });
