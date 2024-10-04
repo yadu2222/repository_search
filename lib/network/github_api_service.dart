@@ -10,12 +10,11 @@ class GithubApiService {
   // リポジトリの検索処理
   Future<List<Repository>> getRepositories(String keywords) async {
     try {
-      String query = '$keywords+in:name&sort=stars';
       Request reqData = Request(
         reqType: 'GET',
         url: ApiEndpoints.searchRepository,
         queryParams: {
-          'q': query,
+          'q': keywords,
         },
       );
       final response = await httpReq.httpReq(reqData);
