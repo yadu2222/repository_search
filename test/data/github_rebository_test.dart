@@ -20,25 +20,26 @@ void main() {
       repository = GithubApiService(mockHttpReq);
     });
 
-    test('通信に成功しました', () async {
+    test('getRepositories', () async {
       // モックレスポンスデータ
       final mockResponse = {
         'items': [
           {
             'id': 1,
             'name': 'flutter',
-            'owner': {'avatar_url': 'https://example.com/avatar.png'},
+            'owner': {'avatar_url': 'https://example.com/avatar.png','html_url': 'https://example.com'},
             'language': 'Dart',
             'stargazers_count': 1000,
             'watchers_count': 1000,
             'forks_count': 500,
             'open_issues_count': 10,
+            'html_url': 'https://example.com',
           }
         ]
       };
 
       // モックのHttpReqが成功時にモックレスポンスを返すよう設定
-      when(mockHttpReq.httpReq(mockReq)).thenAnswer((_) async => mockResponse);
+      when(mockHttpReq.httpReq(any)).thenAnswer((_) async => mockResponse);
 
       // 実際にリポジトリのメソッドを呼び出す
       final result = await repository.getRepositories('flutter');
@@ -52,6 +53,8 @@ void main() {
       expect(result[0].numberOfWatchers, 1000);
       expect(result[0].numberOfForks, 500);
       expect(result[0].openIssues, 10);
+      expect(result[0].repositoryUrl, 'https://example.com');
+      expect(result[0].ownerUrl, 'https://example.com');
 
       // モックが1回だけ呼ばれたことを確認
       verify(mockHttpReq.httpReq(mockReq)).called(1);

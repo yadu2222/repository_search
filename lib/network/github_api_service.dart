@@ -7,6 +7,7 @@ class GithubApiService {
   HttpReq httpReq;
   GithubApiService(this.httpReq);
 
+  // リポジトリの検索処理
   Future<List<Repository>> getRepositories(String keywords) async {
     try {
       String query = '$keywords+in:name&sort=stars';
