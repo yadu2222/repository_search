@@ -46,6 +46,24 @@ class MockRepositoryProvider extends _i1.Mock
       ) as bool);
 
   @override
+  set repositories(List<_i3.Repository>? repositories) => super.noSuchMethod(
+        Invocation.setter(
+          #repositories,
+          repositories,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  set loading(bool? value) => super.noSuchMethod(
+        Invocation.setter(
+          #loading,
+          value,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
   bool get hasListeners => (super.noSuchMethod(
         Invocation.getter(#hasListeners),
         returnValue: false,
