@@ -1,16 +1,45 @@
-# repository_search
+## 使用技術
+<img src="https://img.shields.io/badge/-Flutter-00bfff.svg?logo=flutter&style={バッチのスタイル}&logoColor={ロゴのカラーコード}">
 
-A new Flutter project.
+## プロジェクトの概要
+- repository_search
+- githubリポジトリの検索を行えるアプリ
 
-## Getting Started
+## 環境
+ - dart 3.5.3
+ - Flutter 3.24.3
 
-This project is a starting point for a Flutter application.
+## ディレクトリ構成
+```
+.
+├── .gitignore
+├── README.md
+├── lib
+│   ├── .DS_Store
+│   ├── core
+│   ├── data
+│   ├── main.dart
+│   ├── network
+│   └── view
+├── pubspec.lock
+├── pubspec.yaml
+├── repository_search
+│   ├── .DS_Store
+│   ├── .dart_tool
+│   ├── android
+│   ├── ios
+│   └── macos
+├── repository_search.iml
+├── test
+│   ├── .DS_Store
+│   ├── data
+│   ├── mock
+│   ├── ui
+│   └── widget_test.dart
+ ```
 
-A few resources to get you started if this is your first Flutter project:
+ ## 開発環境構築
+ ```
+flutter pub get    // パッケージのインストール
+ ```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
