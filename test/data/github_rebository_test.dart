@@ -9,6 +9,7 @@ import '../mock/api_client.mocs.mocks.dart'; // 確認
 void main() {
   reqModel.Request mockReq = reqModel.Request(reqType: 'GET', url: ApiEndpoints.searchRepository, queryParams: {'q': 'flutter+in:name&sort=stars'});
 
+  // うまく動きませんでした。どうしてなのか辿り着けなかったため教えていただけると助かります
   group('GitHubRepository Tests', () {
     late MockHttpReq mockHttpReq;
     late GithubApiService repository;
