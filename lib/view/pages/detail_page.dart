@@ -40,6 +40,10 @@ class DetailPage extends StatelessWidget {
                     number: repository.numberOfWatchers,
                     icon: Icons.remove_red_eye,
                   ),
+                  NumberLabel(
+                    number: repository.openIssues,
+                    icon: Icons.feedback,
+                  ),
                 ],
               ),
               Row(mainAxisSize: MainAxisSize.min, children: [
