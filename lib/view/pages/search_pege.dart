@@ -9,6 +9,10 @@ import '../components/templates/basic_template.dart';
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
 
+  final String title = 'GitHubリポジトリ検索';
+  final String hintText = 'リポジトリ名を入力してください';
+  final String snackBarText = '検索ワードを入力してください';
+
   @override
   Widget build(BuildContext context) {
     // 遷移
@@ -18,23 +22,25 @@ class SearchPage extends StatelessWidget {
         MaterialPageRoute(builder: (context) => (DetailPage(repository: repository))),
       );
     }
-
     return MediaQuery.of(context).orientation == Orientation.portrait
-
         // 縦向き
         ? BasicTemplate(
-            title: 'GitHubリポジトリ検索',
+            title: title,
             children: [
               // 検索フォーム
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
                 child: TextField(
-                  decoration: const InputDecoration(
-                    hintText: 'リポジトリ名を入力してください',
-                    border: OutlineInputBorder(),
+                  decoration: InputDecoration(
+                    hintText: hintText,
+                    border:const OutlineInputBorder(),
                   ),
                   onSubmitted: (String value) {
-                    context.read<RepositoryProvider>().search(value); // Providerからインスタンスを取得し、searchメソッドを呼び出す
+                    if (value.isNotEmpty) {
+                      context.read<RepositoryProvider>().search(value); // Providerからインスタンスを取得し、searchメソッドを呼び出す
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(snackBarText)));
+                    }
                   },
                 ),
               ),
@@ -52,7 +58,7 @@ class SearchPage extends StatelessWidget {
           )
         // 横向き
         : BasicTemplate(
-            title: 'GitHubリポジトリ検索',
+            title: title,
             portrait: false,
             children: [
               // 検索フォーム
@@ -61,12 +67,16 @@ class SearchPage extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
                   width: 200,
                   child: TextField(
-                    decoration: const InputDecoration(
-                      hintText: 'リポジトリ名を入力してください',
-                      border: OutlineInputBorder(),
+                    decoration: InputDecoration(
+                      hintText: hintText,
+                      border: const OutlineInputBorder(),
                     ),
                     onSubmitted: (String value) {
-                      context.read<RepositoryProvider>().search(value); // Providerからインスタンスを取得し、searchメソッドを呼び出す
+                      if (value.isNotEmpty) {
+                        context.read<RepositoryProvider>().search(value); // Providerからインスタンスを取得し、searchメソッドを呼び出す
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(snackBarText)));
+                      }
                     },
                   ),
                 ),
