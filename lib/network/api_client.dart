@@ -7,8 +7,8 @@ import '../data/models/req_model.dart';
 import '../core/constans/api_endpoints.dart';
 
 class HttpReq {
-  Future<Map> httpReq(Request reqData) async {
-    String url = ApiEndpoints.baseUrl + reqData.url; // urlを生成
+  Future<Map> httpReq(Request? reqData) async {
+    String url = ApiEndpoints.baseUrl + reqData!.url; // urlを生成
     // パラメータがあればurlと合成
     if (reqData.pasParams != null) {
       url += "/${reqData.pasParams}";
