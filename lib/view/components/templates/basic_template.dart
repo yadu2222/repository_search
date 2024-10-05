@@ -7,19 +7,16 @@ class BasicTemplate extends StatelessWidget {
   final bool popIcon;
   final List<Widget> children;
   final IconButton? featureIconButton;
-  final bool Function()? popFunction;
   final bool portrait; // 縦かどうか
 
-  const BasicTemplate({super.key, required this.title, this.popIcon = false, required this.children, this.featureIconButton, this.popFunction, this.portrait = true});
+  const BasicTemplate({super.key, required this.title, this.popIcon = false, required this.children, this.featureIconButton,this.portrait = true});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBarView(
           titleText: title,
-          popIconButton: popIcon,
           featureIconButton: featureIconButton,
-          popFunction: popFunction,
         ), // ,
         body: Center(
             child: portrait
