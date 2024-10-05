@@ -30,12 +30,12 @@
 │   ├── ios
 │   └── macos
 ├── repository_search.iml
-├── test
-│   ├── .DS_Store
-│   ├── data
-│   ├── mock
-│   ├── ui
-│   └── widget_test.dart
+└── test
+    ├── .DS_Store
+    ├── data
+    ├── mock
+    ├── ui
+    └── widget_test.dart
  ```
 
  ## 開発環境構築
